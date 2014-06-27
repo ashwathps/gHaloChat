@@ -1,0 +1,18 @@
+extends ../inc/layout
+
+block main-content
+    .navbar.navbar-inverse.navbar-fixed-top
+        .container(ng-controller="loginCtrl")
+            .navbar-header
+                a.navbar-brand(href="/") gHaloChat
+                    h6 A grabHalo chat application
+            .navbar-collapse.collapse
+                ul.nav.navbar-nav
+                    li
+                        a(href="/") Home
+                    li(ng-show="identity.isAuthenticated()")
+                        a(href="/mail") Messages
+                //div(ng-include="'/partials/login
+    section.content
+        div(ng-view)
+    //- h1= dbMessage

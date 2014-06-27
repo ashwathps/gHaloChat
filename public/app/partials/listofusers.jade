@@ -1,0 +1,24 @@
+.container(ng-controller="allusrCtrl")
+    div.input-group
+        style.
+            textarea { width: 360px; height: 85px; }
+        span.input-group-addon
+            textarea(ng-model="payload.message")
+        button.btn.btn-primary(ng-click="sendmessage()")
+            span.glyphicon.glyphicon-transfer='  Send Message'
+    div.btn-group
+        button.btn.btn-default(ng-click="checkAll()") Check all
+        button.btn.btn-default(ng-click="uncheckAll()") Uncheck all
+    br
+    br
+    div.col-lg-3(ng-repeat="u in userslist")
+        div.input-group
+            span.input-group-addon
+                input(type="checkbox", checklist-model="payload.recipients", checklist-value="u")
+            label='  {{u.username}}'
+    br
+    br
+    br
+    br
+    //-div.col-xs-12.col-sm-6
+    //-    pre {{payload.recipients|json}}

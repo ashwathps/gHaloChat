@@ -1,0 +1,17 @@
+{
+  "name": "A grabHalo chat for test",
+  "version": "0.0.1",
+  "authors": [
+    "ashwath <@yahoo.com>"
+  ],
+  "description": "Test1",
+  "license": "MIT",
+  "private": true,
+  "dependencies": {
+    "jquery": "~2.1.1",
+    "toastr": "~2.0.3",
+    "angular": "~1.2.18",
+    "angular-resource": "~1.2.18",
+    "angular-route": "~1.2.18"
+  }
+}

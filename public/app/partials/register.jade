@@ -1,0 +1,23 @@
+.container
+    .well
+        form.form-horizontal(name="registerForm")
+            fieldset
+                legend New user registration
+                .form-group
+                    label.col-md-2.control-label(for="email") Email
+                    .col-md-10
+                        input.form-control(name="email", type="email", placeholder="Email Address", ng-model="email", required)
+                .form-group
+                    label.col-md-2.control-label(for="password") Password
+                    .col-md-10
+                        input.form-control(name="email", type="password", placeholder="Password", ng-model="password", required)
+                .form-group
+                    label.col-md-2.control-label(for="nickname") Nickname
+                    .col-md-10
+                        input.form-control(name="nickname", type="text", placeholder="Choose a unique nickname", ng-model="nickname", required)
+                .form-group
+                    .col-md-10.col-md-offset-2
+                        .pull-right
+                            button.btn.btn-primary(ng-click="register()", ng-disabled="registerForm.$invalid") Register
+                            | &nbsp;
+                            a.btn.btn-default(hraf="/") Cancel

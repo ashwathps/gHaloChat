@@ -1,0 +1,26 @@
+doctype
+html
+    head
+        title gHaloChat
+        link(href="/favicon.ico", rel="shortcut icon", type="image/x-icon")
+        link(rel="stylesheet", href="/css/bootstrap.css")
+        link(rel="stylesheet", href="/vendor/toastr/toastr.css")
+        link(rel="stylesheet", href="/css/main.css")
+    body(ng-app='app')
+        include currentUser
+        block main-content
+    - for(var i = 0; i < 5; ++i){
+    br
+    - }
+    style.
+        footer {
+            width: 100%;
+            height: 20px;
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            background: #c0c0c0;
+        }
+    footer.container.text-center
+        p &copy; 2014 gHaloChat application
+        include scripts

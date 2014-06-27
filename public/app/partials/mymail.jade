@@ -1,0 +1,18 @@
+
+.container(ng-controller="mymailCtrl")
+    style.
+        button { width: 100%; }
+        footer { visibility: hidden;}
+        textarea#mail {
+            border: 3px solid #cccccc;
+            padding: 5px;
+            font-family: Tahoma, sans-serif;
+            min-height: 150px;
+        }
+    .col-lg-6(ng-repeat="t in threads")
+        p
+            span='  Messages from {{t.username}}'
+            span.input-group-addon
+            textarea.col-lg-12(id="mail", readonly=true) {{t.messages}}
+    .navbar.navbar-default.navbar-fixed-bottom
+        button.btn.btn-lg(ng-click="getMoreConversations()") Load more conversations

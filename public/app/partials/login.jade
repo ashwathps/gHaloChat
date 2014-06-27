@@ -1,0 +1,26 @@
+.navbar-center(ng-controller="loginCtrl")
+    form.navbar-form(ng-hide="identity.isAuthenticated()")
+        p
+            span.glyphicon.glyphicon-user
+        .form-group
+            input.form-control(placeholder="Username/nickname", ng-model="_username")
+        .form-group
+            input.form-control(type="password", placeholder="Password", ng-model="_pwd")
+        .form-group
+            button.btn.btn-primary(ng-click="signin(_username, _pwd)")
+                span.glyphicon.glyphicon-log-in='   Login'
+        hr.divider
+        p
+            a(href="/register") New user?
+    .nav.navbar-nav.navbar-right(ng-show="identity.isAuthenticated()")
+        li.dropdown
+            a.dropdown-toggle(href="", data-toggle="dropdown")
+                | Logged in as {{identity.currentUser.username}}
+                b.caret
+            ul.dropdown-menu
+                li
+                    a(href="", ng-click="signout()") Sign Out
+                    //-a(href="/list_users") Start Chat
+                    a(href="", ng-click ="listUsers(identity.currentUser)") Start Chat
+
+                        //- //-form.form-horizontal(ng-hide="identity.isAuthenticated()")
