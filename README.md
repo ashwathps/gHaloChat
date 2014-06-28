@@ -24,6 +24,11 @@ Sha1 with 128 Byte entcryption using the node's crypto module. hashed & salted.
 ###persistence
 Uses mongodb hosted on MongoLab.com
 
+###Error handling
+Server side: console.logs
+
+Client side: Based on the REST http status code. ( In progress )
+
 ###copyright and license
     MIT, feel free to make any changes.
     
