@@ -18,7 +18,7 @@ exports.createUser = function(req, res, next){
 
     User.create(usrData, function(err, user){
         if(err){
-            if(err.toString().indexOf('E11000') > -1){
+            if(err.toString().indexOf('E11000') > -1){ //duplicate username error, unique contraint in mongoose schema
                 err = new Error('Nickname already taken, try another');
             }
             res.status(400);
