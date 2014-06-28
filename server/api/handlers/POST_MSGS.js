@@ -95,6 +95,7 @@ function handleresponse(req, res, err){
 
 };
 
+// Single message create
 function create_message_doc(payload, sender){
 
     var msgQ = mongoose.model('Message');
@@ -107,29 +108,3 @@ function create_message_doc(payload, sender){
 
     return newmsg_instance;
 }
-
-
-
-/*var args = {
- 'query' : {_id: payload[0].id},
- 'update': { $addToSet: {mailbox: {
- s_id: new mongoose.Types.ObjectId(sender),
- msgs: newmsg.id
- }}}
- }
- mongoose.model('User').findById(args, function(err, field){
-
- });
- //add the message to each recipient's mailbox with some metadata
- md = {
- read: false,
-
- }*/
-
-/*
- msgQ.create({
- msg: payload.message,
- sentTmstmp: payload.sent_time,
- rcvTmstmp: Date.now() //time-zone consideration :(
- });
- */
