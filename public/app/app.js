@@ -1,3 +1,7 @@
+/*
+    Angularjs application 'app'
+*/
+
 angular.module('app', ['ngResource', 'ngRoute', 'checklistModel']);
 
 angular.module('app').config(function($routeProvider, $locationProvider){
@@ -9,6 +13,7 @@ angular.module('app').config(function($routeProvider, $locationProvider){
         .when('/register', {templateUrl: '/partials/register', controller: 'registerCtrl' })
 });
 
+//main controller for main.jade
 angular.module('app').controller('mainCtrl', function($scope){
     $scope.someVar = "Hello Angular"
 });
