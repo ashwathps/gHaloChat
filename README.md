@@ -17,8 +17,8 @@ It uses REST APIs to interact with the server and embraces all the SPA rules (al
 Uses passport with Local strategy for authenticating users.
 
 Sha1 with 128 Byte entcryption using the node's crypto module. hashed & salted.
-    npm install crypto
-    npm install passport
+    > npm install crypto
+    > npm install passport
 
 ###persistence
 Uses mongodb hosted on MongoLab.com
