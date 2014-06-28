@@ -8,10 +8,9 @@
 
 var async = require('async'),
     url = require('url'),
-    mongoose = require('mongoose'),
+    mongoose = require('mongoose'), //nodejs mongodb modelling
     er = require('./err_codes');
 
-console.log('parallel.js loaded');
 exports.version = "0.0.1";
 
 exports.apiname = "GET_MSGS";
@@ -43,7 +42,7 @@ exports.executeQuery = function(req, res) {
         threads: []
     };
 
-    var limit = queryUrlObj['limit'] || 4;
+    var limit = queryUrlObj['limit'] || 4; //limit in the URL
     var skipIdx = queryUrlObj['skipIndex'] || 0;
 
     var usr_data = {
@@ -51,6 +50,7 @@ exports.executeQuery = function(req, res) {
         sent_msgs: []
     };
     var one = undefined;
+    //Async series for serial execution
     async.series([
             function(callbk){
                 mongoose.model('User').findById(q_user_id, function(err, usr){
@@ -67,6 +67,8 @@ exports.executeQuery = function(req, res) {
             },
             function(callbk) {
                 var i = 0;
+                //Major scope for parallelism
+                //Map reduce candidate
                 (function geteachconv() {
                     if(i >= one.length) {
                         callbk();
@@ -157,10 +159,11 @@ function createFinalResponse(res, err, data){
     res.end();
 };
 
-
+/*
+    Paginate list of users when more converations have to be loaded.
+*/
 var paginate = function(data, skipIndex, count)
 {
-
     var dlength = data.length;
 
     var startIndex = parseInt(skipIndex);
