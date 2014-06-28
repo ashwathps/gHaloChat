@@ -1,6 +1,11 @@
+/*
+   Consume a promise
+*/
 angular.module('app').factory('Auth', function($http, Identity, $q, nguser){
 
     return{
+        //Authenticate the user with a POST
+        //upon result, update identity
         authenticateUser: function(u, e){
 
             var dfd = $q.defer();
@@ -15,6 +20,7 @@ angular.module('app').factory('Auth', function($http, Identity, $q, nguser){
             })
             return dfd.promise;
         },
+        //A new nguser is a User model, new will make a POST, handled in the server.
         createUser: function(newUsrData){
             var newUser = new nguser(newUsrData);
             var dfd = $q.defer();
