@@ -1,3 +1,8 @@
+
+/*
+    Angularjs resource to fetch message conversations (threads) for that user.
+*/
+
 angular.module('app')
     .provider('GetMyMsgsRes', function(){
         this.$get = ['$resource', function($resource){
