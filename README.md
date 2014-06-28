@@ -11,6 +11,12 @@ It uses REST APIs to interact with the server and embraces all the SPA rules (al
 
 ###copyright and license
     MIT, feel free to make any changes.
+    
+###security and access
+Uses passport with Local strategy for authenticating users.
+sha1 with 128 Byte entcryption using the node's crypto module. hashed & salted.
+    npm install crypto
+    npm install passport
 
 
 
