@@ -108,7 +108,8 @@ exports.executeQuery = function(req, res) {
                             var conv = {
                                 username: usr_data.sent_user.username,
                                 email: usr_data.sent_user.email,
-                                messages: usr_data.sent_msgs.join('\n')
+                                messages: usr_data.sent_msgs.join('\n'),
+                                sid: usr_data.sent_user._id
                             }
                             threaded_convs.threads.push(conv);
                             ++i;

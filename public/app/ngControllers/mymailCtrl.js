@@ -1,29 +1,33 @@
-angular.module('app').controller('mymailCtrl', function($scope, $http, Identity, notifier, GetMyMsgsRes, $location){
+angular.module('app').controller('mymailCtrl', function($scope, $http, Identity, notifier, GetMyMsgsRes, PostMessageRes, $location){
     $scope.identity = Identity;
     $scope.threads = [];
     $scope.retrievedCount = 0;
     $scope.totalCount = 0;
+    $scope.msgBackObj = {};
+    $scope.payload = {
+        message: "",
+        recipients: [],
+        sent_time: 0
+    };
+
+    var currentUser = Identity.currentUser;
 
     fetchMessages(Identity.currentUser._id);
-    /*
-    GetMyMsgsRes.fetch({
-        uid: Identity.currentUser._id,
-        skipIndex: $scope.lastReturnedCount
-    }).$promise.then(function(x){
+    $scope.sendMessageBack = function(to_id){
+        //console.log("sent message " + $scope.msgBackObj[to_id] + "to " + to_id);
 
-        console.log('get mail returned with '+ x);
-        if(x.header.status == 200) {
-            $scope.threads = x.payload.threads;
-            $scope.lastReturnedCount = x.payload.threads.length;
-        }
-
-    }, function(e){
-        notifier.notify("Error: " + e.data.error);
-        $location.path('/404');
-    });*/
+        $scope.payload.sent_time = Date.now();
+        $scope.payload.message = $scope.msgBackObj[to_id];
+        $scope.payload.recipients.push({_id: to_id});
+        //prepare payload for POST
+        PostMessageRes.post({uid: currentUser._id},  $scope.payload).$promise.then(function(res){
+            notifier.notify("Message sent");
+            $scope.msgBackObj[to_id] = "";
+        });
+    }
 
     $scope.getMoreConversations = function(){
-        console.log('now calling with skipindex=' + $scope.retrievedCount);
+        //console.log('now calling with skipindex=' + $scope.retrievedCount);
         if($scope.totalCount != $scope.retrievedCount)
             fetchMessages(Identity.currentUser._id);
         else
@@ -36,7 +40,7 @@ angular.module('app').controller('mymailCtrl', function($scope, $http, Identity,
             uid: uid,
             skipIndex: $scope.retrievedCount
         }).$promise.then(function(x){
-                console.log('get mail returned with '+ x);
+                //console.log('get mail returned with '+ x);
                 if(x.header.status == 200) {
                     $scope.threads = $scope.threads.concat(x.payload.threads);
                     $scope.retrievedCount += x.payload.threads.length;
