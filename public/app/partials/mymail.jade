@@ -15,7 +15,7 @@
             span.input-group-addon
             textarea.col-md-12.col-lg-12(id="mail", readonly=true) {{t.messages}}
         textarea.col-md-12.col-lg-12(placeholder="Type to reply", readonly=false, ng-model="msgBackObj[t.sid]")
-        button.btn.btn-primary(ng-click="sendMessageBack(t.sid)")
+        button.btn.btn-primary(ng-click="sendMessageBack(t.sid, $index)")
             span.glyphicon.glyphicon-send='   Send'
     .navbar.navbar-default.navbar-fixed-bottom
         button.btn.btn-lg(ng-click="getMoreConversations()") Load more conversations

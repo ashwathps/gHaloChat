@@ -19,11 +19,14 @@ angular.module('app').controller('mymailCtrl', function($scope, $http, Identity,
         $scope.payload.sent_time = Date.now();
         $scope.payload.message = $scope.msgBackObj[to_id];
         $scope.payload.recipients.push({_id: to_id});
-        //prepare payload for POST
-        PostMessageRes.post({uid: currentUser._id},  $scope.payload).$promise.then(function(res){
-            notifier.notify("Message sent");
-            $scope.msgBackObj[to_id] = "";
-        });
+
+		//prepare payload for POST
+		        PostMessageRes.post({uid: currentUser._id},  $scope.payload).$promise.then(function(res){
+		            notifier.notify("Message sent");
+		//instant update on the screen - added 5/7/14
+		            $scope.threads[index].messages += 'Sent: ' + new Date().toString() + '\n' + $scope.msgBackObj[to_id] + '\n\n';
+		            $scope.msgBackObj[to_id] = "";
+		        });
     }
 
     $scope.getMoreConversations = function(){
