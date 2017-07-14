@@ -1,4 +1,4 @@
-gHaloChat
+# gHaloChat
 =============
 
 Angularjs and nodejs based application to demonstrate a simple chat feature.
@@ -6,31 +6,26 @@ Angularjs and nodejs based application to demonstrate a simple chat feature.
 gHaloChat is built using nodejs, angularjs and mongoDB for persistence.
 It uses REST APIs to interact with the server and embraces all the SPA rules (almost)
 
-###Its hosted on Heroku
-    http://warm-ravine-7119.herokuapp.com
+### Hosted on Heroku
+    http://warm-ravine-7120.herokuapp.com/
     
-###UI/CSS
-    Using twitter's Bootstrap
+### UI/CSS
+    Twitter's Bootstrap
     
 
-###security and access
+### security and access
 Uses passport with Local strategy for authenticating users.
 
 Sha1 with 128 Byte entcryption using the node's crypto module. hashed & salted.
 
+```
 > npm install crypto;
 > npm install passport
+```
 
-###persistence
+### persistence
 Uses mongodb hosted on MongoLab.com
 
-###Error handling
-Server side: console.logs
-
-Client side: Based on the REST http status code. ( In progress )
-
-###copyright and license
+### copyright and license
     MIT, feel free to make any changes.
     
-
-
