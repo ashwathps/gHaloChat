@@ -1,5 +1,4 @@
 # gHaloChat
-=============
 
 Angularjs and nodejs based application to demonstrate a simple chat feature.
 ---------------
@@ -11,7 +10,6 @@ It uses REST APIs to interact with the server and embraces all the SPA rules (al
     
 ### UI/CSS
     Twitter's Bootstrap
-    
 
 ### security and access
 Uses passport with Local strategy for authenticating users.
